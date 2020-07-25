@@ -1,0 +1,88 @@
+<html>
+
+<head lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Fire Control</title>
+
+  <style>
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #fafafa;
+    }
+
+    header {
+      background-color: #222222;
+      padding: 1.5rem;
+      color: #fafafa;
+    }
+
+    section {
+      margin: 1.5rem;
+      padding: 1.5rem;
+      height: 400px;
+      box-shadow: 0 2px 4px 0 #00000033;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <span>Fire control panel</span>
+  </header>
+
+  <section>
+    <canvas id="chart"></canvas>
+  </section>
+
+  <script src="./Chart.min.js"></script>
+
+  <script>
+
+    const data = [];
+
+    window.onload = function () {
+      setInterval(doRequest, 800);
+    };
+
+    function doRequest() {
+      data.push({ x: Math.random(), y: Math.random() })
+      setupCharts()
+    }
+
+    function setupCharts() {
+      var ctx = document.getElementById('chart').getContext('2d');
+      var chat = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.map(item => "").splice(-20),
+          datasets: [
+            {
+              label: 'Temperature',
+              backgroundColor: 'transparent',
+              borderColor: '#cc8800',
+              data: data.map(item => item).splice(-20),
+              lineTension: 0,
+            }
+          ]
+        },
+        options: {
+          animation: false,
+          responsive: true,
+          maintainAspectRatio: false,
+        }
+      });
+    }
+
+  </script>
+</body>
+
+</html>

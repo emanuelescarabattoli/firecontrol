@@ -1,0 +1,12 @@
+{
+    "editor.tabSize": 2,
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.minimap.enabled": false,
+    "window.title": "${dirty}${activeEditorMedium}",
+    "editor.renderWhitespace": "all",
+    "trailing-spaces.trimOnSave": true,
+    "files.trimFinalNewlines": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    }
+}
